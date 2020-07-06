@@ -5,10 +5,10 @@ def swap(nums, i, j):
 
 
 def quick_sort(nums):
-    if len(nums) == 0 or len(nums) == 1:
+    if len(nums) == 0:
         return nums
     pivot = nums[-1]
-    i, j = 0, len(nums) - 2
+    i, j = 0, len(nums) - 1
     while 1:
         while nums[i] < pivot and i != j:
             i += 1
@@ -20,3 +20,6 @@ def quick_sort(nums):
             swap(nums, i, -1)
             nums = quick_sort(nums[:i]) + [nums[i]] + quick_sort(nums[i+1:])
             return nums
+
+
+print(quick_sort([1, 2, 3, 5, 9]))
