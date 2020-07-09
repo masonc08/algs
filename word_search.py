@@ -3,31 +3,27 @@
 
 class Solution:
     def exist(self, board, word):
-        word_map = {}
-        for c in word:
-            word_map[c] = word_map.get(c, 0) + 1
         for i in range(len(word)):
             for j in range(len(word[0])):
-                _word_map = word_map.copy()
-                Solution._dfs(board, i, j, set(), _word_map)
-                if len(_word_map == 0):
+                if Solution._dfs(board, i, j, word):
                     return True
         return False
 
     @staticmethod
-    def _dfs(board, i, j, visited, word_map):
+    def _dfs(board, i, j, word, depth=0):
         if i == len(board) or \
                 j == len(board[0]) or \
-                (i, j) in visited or \
-                board[i][j] not in word_map:
-            return
-        visited.add((i, j))
+                i == -1 or j == -1 or \
+                board[i][j] != word[depth]:
+            return False
+        # has to be part of the word chain at this point
+        if depth == len(word) - 1:
+            return True
         c = board[i][j]
-        word_map[c] -= 1
-        if word_map[c] == 0:
-            del word_map[c]
-        Solution._dfs(board, i + 1, j, visited, word_map)
-        Solution._dfs(board, i - 1, j, visited, word_map)
-        Solution._dfs(board, i, j + 1, visited, word_map)
-        Solution._dfs(board, i, j - 1, visited, word_map)
-
+        board[i][j] = ''
+        down = Solution._dfs(board, i + 1, j, word, depth+1)
+        up = Solution._dfs(board, i - 1, j, word, depth+1)
+        right = Solution._dfs(board, i, j + 1, word, depth+1)
+        left = Solution._dfs(board, i, j - 1, word, depth+1)
+        board[i][j] = c
+        return any[down, up, right, left]
