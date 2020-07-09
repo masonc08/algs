@@ -3,8 +3,8 @@
 
 class Solution:
     def exist(self, board, word):
-        for i in range(len(word)):
-            for j in range(len(word[0])):
+        for i in range(len(board)):
+            for j in range(len(board[0])):
                 if Solution._dfs(board, i, j, word):
                     return True
         return False
@@ -21,9 +21,12 @@ class Solution:
             return True
         c = board[i][j]
         board[i][j] = ''
-        down = Solution._dfs(board, i + 1, j, word, depth+1)
-        up = Solution._dfs(board, i - 1, j, word, depth+1)
-        right = Solution._dfs(board, i, j + 1, word, depth+1)
-        left = Solution._dfs(board, i, j - 1, word, depth+1)
+        sol = Solution._dfs(board, i + 1, j, word, depth + 1) or \
+            Solution._dfs(board, i - 1, j, word, depth + 1) or \
+            Solution._dfs(board, i, j + 1, word, depth + 1) or \
+            Solution._dfs(board, i, j - 1, word, depth + 1)
         board[i][j] = c
-        return any[down, up, right, left]
+        return sol
+
+
+
