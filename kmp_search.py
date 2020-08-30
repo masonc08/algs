@@ -25,7 +25,9 @@ def kmp_search(s, pattern):
     i = 0
     j = -1
     while i < len(s):
-        if s[i] == table[j+1][0]:
+        if j == len(pattern) - 1:
+            return True
+        elif s[i] == table[j+1][0]:
             i += 1
             j += 1
         elif j != -1:
