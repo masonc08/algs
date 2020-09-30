@@ -1,4 +1,5 @@
 # Leetcode 92
+# 86.46% Time, 5.83% Space
 
 # Definition for singly-linked list.
 class ListNode:
