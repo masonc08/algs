@@ -1,4 +1,4 @@
-# WIP
+# TODO: WIP
 
 def longest_substring(s1, s2):
   sstr = if (len(s1) <= len(s2)) s1 else s2
