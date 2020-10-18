@@ -1,2 +1,4 @@
 # algs
-Various encountered algorithms through practice
+A repository to store various algorithms encountered through deliberate practice
+
+[Leetcode](Leetcode)
