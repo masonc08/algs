@@ -2,4 +2,4 @@
 A repository to store various algorithms encountered through deliberate practice
 
 ## Links
-[Leetcode](Leetcode)
+[Leetcode](https://leetcode.com/mxcao/)
