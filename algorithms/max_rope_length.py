@@ -1,6 +1,5 @@
 """
 https://cdn.discordapp.com/attachments/321084536308105217/769374570581852160/unknown.png
-Doesn't work perfectly
 """
 
 
@@ -13,10 +12,14 @@ class Solution:
             mid = (i+j)/2
             possible_segments = self.get_segments(mid, lengths)
             if possible_segments < segments:
-                j = mid - 1
+                if j == mid:
+                    break
+                j = mid
             else:
-                i = mid + 1
-        return j
+                if i == mid:
+                    break
+                i = mid
+        return (i+j)/2
             
 
     def get_segments(self, length, segments):
