@@ -1,3 +1,10 @@
+"""
+Leetcode 48
+Runtime: 36 ms, faster than 61.41% of Python3 online submissions for Rotate Image.
+Memory Usage: 14.1 MB, less than 99.99% of Python3 online submissions for Rotate Image.
+"""
+
+
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
