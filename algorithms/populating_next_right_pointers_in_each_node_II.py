@@ -1,7 +1,5 @@
 """
 Leetcode 117
-Runtime: 48 ms, faster than 75.51% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
-Memory Usage: 15 MB, less than 100.00% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
 """
 
 
@@ -14,7 +12,7 @@ class Node:
         self.next = next
 
 """
-Recurisve, O(n) space
+O(1) space
 Runtime: 44 ms, faster than 90.92% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
 Memory Usage: 15 MB, less than 100.00% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
 """
@@ -39,7 +37,10 @@ class Solution:
 
 
 """
-Iterative, O(n) space
+O(n) space
+Runtime: 48 ms, faster than 75.51% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+Memory Usage: 15 MB, less than 100.00% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+
 """
 # class Solution:
 #     def connect(self, root: 'Node') -> 'Node':
