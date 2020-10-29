@@ -8,7 +8,7 @@ Memory Usage: 14.1 MB, less than 100.00% of Python3 online submissions for Excel
 class Solution:
     def convertToTitle(self, n: int) -> str:
         sol = []
-        while n >= 1:
+        while n:
             n -= 1
             sol.append(chr(ord('A') + n%26))
             n //= 26
