@@ -3,7 +3,7 @@ Leetcode 148
 Runtime: 716 ms, faster than 5.04% of Python3 online submissions for Sort List.
 Memory Usage: 29.9 MB, less than 6.25% of Python3 online submissions for Sort List.
 """
-
+# TODO: Bad solution, consider revising
 
 # Definition for singly-linked list.
 class ListNode:
