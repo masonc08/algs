@@ -1,5 +1,6 @@
 """
 Leetcode 310
+November Leetcoding Challenge
 Runtime: 244 ms, faster than 78.20% of Python3 online submissions for Minimum Height Trees.
 Memory Usage: 19.2 MB, less than 5.12% of Python3 online submissions for Minimum Height Trees.
 """

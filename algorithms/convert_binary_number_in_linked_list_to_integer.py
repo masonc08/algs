@@ -1,6 +1,6 @@
 """
 Leetcode 1290
-November Leetcoding Challenge #1
+November Leetcoding Challenge
 Runtime: 28 ms, faster than 79.99% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
 Memory Usage: 14.1 MB, less than 100.00% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
 """
