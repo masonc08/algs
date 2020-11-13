@@ -4,3 +4,4 @@ venv/
 *.md~
 *.vscode/
 *.code-workspace
+playground.py
