@@ -2,41 +2,20 @@
 
 class Solution:
     def longest_substring(self, s1: str, s2: str) -> int:
-        pattern = min(s1, s2, key=len)
-        s = s1 if pattern is s2 else s2
-        table = self._gen_table(pattern)
-        i, j = 0, 0
+        dp = [[0]*len(s2) for _ in range(len(s1))]
         sol = 0
-        while i < len(s) and j < len(pattern):
-            if s[i] == pattern[j]:
-                j += 1
-                i += 1
-            else:
-                sol = max(sol, j)
-                if j == 0:
-                    i += 1
-                else:
-                    j = table[j-1]
-        return max(sol, j)
-        
-
-    def _gen_table(self, s: str) -> list:
-        if len(s) == 0:
-            return []
-        sol = [0]*len(s)
-        i, j = 0, 1
-        while j < len(s):
-            if s[i] != s[j]:
-                sol[j] = 0
-                i = 0
-            else:
-                sol[j] = i+1
-                i += 1
-            j += 1
+        for i in range(len(s1)):
+            for j in range(len(s2)):
+                if s1[i] == s2[j]:
+                    dp[i][j] += dp[i-1][j-1] if i-1 >= 0 and j-1 >= 0 else 0
+                    dp[i][j] += 1
+                    sol = max(sol, dp[i][j])
         return sol
 
-f = Solution().longest_substring
+class Assert(Solution):
+    def __init__(self):
+        assert self.longest_substring("abcde", "defhg") == 2
+        assert self.longest_substring("12321", "32147")  == 3
+        assert self.longest_substring("", "") == 0
 
-assert f("mississipi", "issip") == 5
-assert f("aple", "pineapple") == 2
-assert f("grep", "") == 0
+Assert()
