@@ -7,14 +7,17 @@ class Trie:
         self.end = False
         self.children = {}
 
-    def add(self, s: str, i=0):
-        if i == len(s):
-            self.end = True
-            return
-        c = s[i]
-        if c not in self.children:
-            self.children[c] = Trie(c)
-        self.children[c].add(s, i+1)
+    """
+    Populate the trie with word s
+    O(n) runtime, O(1) space
+    """
+    def add(self, s: str):
+        runner = self
+        for c in s:
+            if c not in runner.children:
+                runner.children[c] = Trie(c)
+            runner = runner.children[c]
+        runner.end = True
 
 
 class AhoCorasick(Trie):
@@ -22,6 +25,10 @@ class AhoCorasick(Trie):
         super().__init__('')
         self.fail_link = self
 
+    """
+    Populate fail links of each trie node using Aho-Corasick algorithm
+    O(n) runtime and space assuming unbalanced tree
+    """
     def add_fail_links(self):
         q = deque()
         for key in self.children:
@@ -41,6 +48,10 @@ class AhoCorasick(Trie):
             for key in node.children:
                 q.append((node, node.children[key]))
 
+    """
+    Query string s for the patterns contained in the trie
+    O(n) runtime and space assuming unbalanced tree
+    """
     def query(self, s: str) -> List[str]:
         visited = set()
         runner = self
