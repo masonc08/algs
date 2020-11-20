@@ -7,3 +7,6 @@
   - In the worst case, there will be at least one failure link, being an empty string if nothing else was matched
 - can identify all matching patterns by traversing master string while following trie, resorting to failure links where required
   - mark down when traversed to end of trie, as that is where a pattern is matched
+- constructed using a bfs
+- traverse a constructed trie by a bfs, at each node, look for a matching character in the children of the node's parent's failure link
+  - this is the node's failure link
