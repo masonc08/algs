@@ -1,0 +1,17 @@
+# Rabin-Karp
+- String matching algorithm similar to KMP
+- uses rolling hash to check similarities of string
+- good for comparing collections of patterns against one string as it is easy to compare hashes
+- traverse string as a rolling window of the size of the pattern and compare hashes of each window to the pattern
+  - if hashes are the same, manually compare the substring and the string to check if they are the same
+- a good rolling hash uses sum of `ascii(c)*p^i`, where...
+  - `c` is the character in the window,
+  - `p` is a prime number,
+  - and `i` is the position of character `c` in the window
+- hash of next window can be calculated from the previous using a formula, this is why it's called a rolling hash
+  - with the example above, `hash(i) = (hash(i-i)-ascii(l))/p+ascii(c)*p^n)`, where...
+   - `i` is the starting index of the new window,
+   - `l` is the evicted character from the previous window,
+   - `c` is the new character of the new window,
+   - `p` is the unique prime number,
+   - and `n` is the length of the sliding window - 1
