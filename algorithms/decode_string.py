@@ -1,5 +1,6 @@
 """
 Leetcode 394
+November Leetcoding challenge
 Runtime: 28 ms, faster than 70.42% of Python3 online submissions for Decode String.
 Memory Usage: 14.3 MB, less than 5.23% of Python3 online submissions for Decode String.
 """
