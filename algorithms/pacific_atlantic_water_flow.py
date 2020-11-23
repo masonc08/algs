@@ -25,12 +25,13 @@ class Solution:
             atlq.append((len(matrix)-1, j))
             pac[0][j] = True
             atl[-1][j] = True
-        while pacq:
-            i, j = pacq.popleft()
-            self._mutate_surroundings(i, j, matrix, pac, pacq)
-        while atlq:
-            i, j = atlq.popleft()
-            self._mutate_surroundings(i, j, matrix, atl, atlq)
+        while pacq or atlq:
+            if pacq:
+                i, j = pacq.popleft()
+                self._mutate_surroundings(i, j, matrix, pac, pacq)
+            if atlq:
+                i, j = atlq.popleft()
+                self._mutate_surroundings(i, j, matrix, atl, atlq)
         sol = []
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
