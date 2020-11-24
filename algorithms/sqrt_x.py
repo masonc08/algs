@@ -4,7 +4,7 @@ Runtime: 36 ms, faster than 54.92% of Python3 online submissions for Sqrt(x).
 Memory Usage: 14.1 MB, less than 75.45% of Python3 online submissions for Sqrt(x).
 """
 
-
+# TODO: Check out integer newton method
 class Solution:
     def mySqrt(self, x: int) -> int:
         if x <= 1:
