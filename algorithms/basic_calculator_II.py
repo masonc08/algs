@@ -4,26 +4,30 @@ November Leetcoding challenge
 """
 
 
+"""
+O(n) runtime, O(1) space solution, one pass
+Runtime: 92 ms, faster than 50.14% of Python3 online submissions for Basic Calculator II.
+Memory Usage: 15.3 MB, less than 84.17% of Python3 online submissions for Basic Calculator II.
+"""
 class Solution:
     def calculate(self, s: str) -> int:
-        sol = cur = last = 0
+        sol = cur = prev = 0
         last_op = "+"
         for i, c in enumerate(s):
             if c.isnumeric():
                 cur *= 10
                 cur += int(c)
-            elif c != " " or i == len(s)-1:
+            if not c.isnumeric() and c != " " or i == len(s)-1:
                 if last_op == "*":
                     prev *= cur
                 elif last_op == "/":
-                    prev //= cur
+                    prev = prev//cur if prev >= 0 else -(abs(prev)//cur)
                 else:
                     sol += prev
                     prev = cur if last_op == '+' else -cur
                 last_op = c
                 cur = 0
-        return sol+last
-
+        return sol+prev
 
     """
     O(n) runtime and space solution, two passing using a stack
@@ -78,3 +82,5 @@ class Solution:
     #         else:
     #             sol += cur[0]
     #     return sol
+
+Solution().calculate("14-3/2")
