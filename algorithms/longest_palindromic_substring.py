@@ -4,6 +4,7 @@ Runtime: 960 ms, faster than 67.45% of Python3 online submissions for Longest Pa
 Memory Usage: 14.4 MB, less than 33.97% of Python3 online submissions for Longest Palindromic Substring.
 """
 
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         if len(s) <= 1:
@@ -22,5 +23,3 @@ class Solution:
                     b += 1
                 sol = max(sol, (a+1, b), key=lambda x: x[1]-x[0])
         return s[sol[0]:sol[1]]
-
-Solution().longestPalindrome("ccc")
