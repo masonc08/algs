@@ -2,8 +2,12 @@
 
 
 class Solution:
-    _memoiz = {}
+    """
+    Runtime: 700 ms, faster than 32.88% of Python3 online submissions for Find Eventual Safe States.
+    Memory Usage: 21.2 MB, less than 50.19% of Python3 online submissions for Find Eventual Safe States.
+    """
     def eventualSafeNodes(self, graph):
+        self._memoiz = {}
         sol = []
         for node in range(len(graph)):
             if self._dfs(graph, node, set()):
