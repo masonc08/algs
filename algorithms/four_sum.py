@@ -4,7 +4,6 @@ Leetcode 18
 
 
 class Solution:
-    # TODO: Investigate general algorithm for NSum problem
     """
     O(n^3) runtime, O(n) space solution, using expanded 3Sum solution
     Runtime: 992 ms, faster than 38.58% of Python3 online submissions for 4Sum.
