@@ -1,5 +1,6 @@
 """
 Leetcode 416
+November Leetcoding challenges
 Runtime: 1348 ms, faster than 50.53% of Python3 online submissions for Partition Equal Subset Sum.
 Memory Usage: 89.3 MB, less than 6.12% of Python3 online submissions for Partition Equal Subset Sum.
 """
@@ -26,5 +27,3 @@ class Solution:
             return cache[i][target]
 
         return dfs(0, target)
-
-print(Solution().canPartition([1, 2, 5]))
