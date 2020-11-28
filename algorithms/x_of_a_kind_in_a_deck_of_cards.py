@@ -8,7 +8,7 @@ Memory Usage: 14.6 MB, less than 13.74% of Python3 online submissions for X of a
 import math
 import collections
 
-# TODO: check out implementing gcd method
+
 class Solution:
     def hasGroupsSizeX(self, deck: List[int]) -> bool:
         col = collections.Counter(deck)
