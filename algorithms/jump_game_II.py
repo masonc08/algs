@@ -34,6 +34,8 @@ class Solution:
     #         v = nums[i]
     #         lowest = len(nums)
     #         for j in range(1, v+1):
-    #             lowest = min(nums[i+j], lowest)
+    #             if i+j >= len(nums):
+    #                 break
+    #             lowest = min(dp[i+j], lowest)
     #         dp[i] = 1+lowest
     #     return dp[0]
