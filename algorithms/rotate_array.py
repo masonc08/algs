@@ -50,6 +50,3 @@ class Solution:
     #     reverse()
     #     reverse(0, k-1)
     #     reverse(k, len(nums)-1)
-
-
-Solution().rotate([1,2,3,4,5,6], 3)
