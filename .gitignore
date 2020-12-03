@@ -5,3 +5,4 @@ venv/
 *.vscode/
 *.code-workspace
 playground.py
+*.h.py
