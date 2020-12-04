@@ -59,16 +59,15 @@ class PassportProcessing:
                 elif k == "hgt":
                     unit = v[-2:]
                     v = v[:-2]
+                    assert unit == "cm" or unit == "in"
                     if unit == "cm":
                         assert v.isnumeric() 
                         assert int(v) >= 150 
                         assert int(v) <= 193
-                    elif unit == "in":
+                    else:
                         assert v.isnumeric() 
                         assert int(v) >= 59 
                         assert int(v) <= 76
-                    else:
-                        raise Exception()
                 elif k == "hcl":
                     assert re.match("#[0-9a-f]{6}", v)
                 elif k == "ecl":
@@ -77,7 +76,7 @@ class PassportProcessing:
                     assert v.isnumeric()
                     assert len(v) == 9
             return True
-        except:
+        except AssertionError:
             return False
 
 
