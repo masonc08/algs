@@ -11,6 +11,29 @@ Leetcode 572
 #         self.right = right
 class Solution:
     """
+    O(S+K) runtime and space by tree serialization
+    Runtime: 60 ms, faster than 99.30% of Python3 online submissions for Subtree of Another Tree.
+    Memory Usage: 15.7 MB, less than 6.92% of Python3 online submissions for Subtree of Another Tree.
+    """
+    def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+        def traverse(node):
+            if not node:
+                sb.append('nil')
+                return
+            sb.append(f'#{node.val}')
+            traverse(node.left)
+            traverse(node.right)
+
+        sb = []
+        traverse(s)
+        s = ' '.join(sb)
+        sb = []
+        traverse(t)
+        t = ' '.join(sb)
+        return t in s
+
+
+    """
     O(S*K) runtime, O(lg(S)) space by brute force
     Runtime: 284 ms, faster than 12.37% of Python3 online submissions for Subtree of Another Tree.
     Memory Usage: 15.1 MB, less than 35.96% of Python3 online submissions for Subtree of Another Tree.
