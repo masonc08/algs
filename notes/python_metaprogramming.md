@@ -2,6 +2,7 @@
 - metagprogramming is code that modifes another part of the program at compile time
 
 ## Closures
+- source: https://www.programiz.com/python-programming/decorator
 - A function defined inside another function is called a nested function
   - nested functions can access variables inside of the function that contains it
   - these variables are called nonlocal variables
