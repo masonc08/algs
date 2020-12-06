@@ -1,7 +1,8 @@
 """
 Leetcode 705
 Runtime: 220 ms, faster than 49.53% of Python3 online submissions for Design HashSet.
-Memory Usage: 18.5 MB, less than 78.45% of Python3 online submissions for Design HashSet."""
+Memory Usage: 18.5 MB, less than 78.45% of Python3 online submissions for Design HashSet.
+"""
 
 
 class MyHashSet:
