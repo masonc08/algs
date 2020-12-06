@@ -1,8 +1,7 @@
 """
 Leetcode 705
-Runtime: 236 ms, faster than 41.71% of Python3 online submissions for Design HashSet.
-Memory Usage: 18.8 MB, less than 54.19% of Python3 online submissions for Design HashSet.
-"""
+Runtime: 220 ms, faster than 49.53% of Python3 online submissions for Design HashSet.
+Memory Usage: 18.5 MB, less than 78.45% of Python3 online submissions for Design HashSet."""
 
 
 class MyHashSet:
@@ -12,7 +11,7 @@ class MyHashSet:
         Initialize your data structure here.
         """
         self.capacity = 0
-        self.table = [None]*10
+        self.table = [None]*16
 
 
     def _expand(self):
@@ -37,7 +36,7 @@ class MyHashSet:
             return
         self.table[i] = key
         self.capacity += 1
-        if self.capacity > len(self.table)//2:
+        if self.capacity > (len(self.table)//4*3):
             self._expand()
 
 
