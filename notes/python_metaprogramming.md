@@ -1,4 +1,4 @@
-# Python Metaprogramming and Decorators
+# Python Metaprogramming
 - metagprogramming is code that modifes another part of the program at compile time
 
 ## Closures
@@ -65,4 +65,100 @@ times5 = make_multiplier_of(5)
 3
 >>> times5.__closure__[0].cell_contents
 5
+```
+
+## Decorators
+- Decorators can add functionality to existing code, making it a form of metaprogramming
+- functions are methods are called __callable__ as they can be called
+- actually functions and methods are just objects that implements `__call__()` magic method
+- decorators are a callable that returns a callable
+
+```python
+def make_pretty(func):
+    def inner():
+        print("I got decorated")
+        func()
+    return inner
+
+
+def ordinary():
+    print("I am ordinary")
+```
+
+- in the above example, `make_pretty` is a decorator as it wraps `func`, adding additional functionality to it
+- if we run `decorated = make_pretty(ordinary)`, we decorate `ordinary` callable with `make_pretty` callable
+  - `make_pretty` then returns the decorated function
+- using `@` tags is a shorthand to doing this, where we use the `@make_pretty` tag instead of calling `make_pretty(f)`
+
+```python
+@make_pretty
+def ordinary():
+    print("I am ordinary")
+
+# is equivalent to
+
+def ordinary():
+    print("I am ordinary")
+ordinary = make_pretty(ordinary)
+```
+
+- however, the above implementations does not accept parameters to be passed into the wrapped function
+- `@` decorator tags will pass parameters of the enclosed function to the decorator's returned callable by default
+- we can simply add parameters to the header of our enclosed function
+
+```python
+def smart_divide(func):
+    def inner(a, b):
+        print("I am going to divide", a, "and", b)
+        if b == 0:
+            print("Whoops! cannot divide")
+            return
+
+        return func(a, b)
+    return inner
+
+
+@smart_divide
+def divide(a, b):
+    print(a/b)
+```
+
+- on this same principle, this means we can also just use `(*args, **kwargs)` as the enclosed function's header
+  - this allows us to make the decorator more dynamic, and adapt to decorate different functions
+- decorators can also be chained through a series of decorators, where the top decorator is the most outer wrapper
+
+```python
+def star(func):
+    def inner(*args, **kwargs):
+        print("*" * 30)
+        func(*args, **kwargs)
+        print("*" * 30)
+    return inner
+
+
+def percent(func):
+    def inner(*args, **kwargs):
+        print("%" * 30)
+        func(*args, **kwargs)
+        print("%" * 30)
+    return inner
+
+
+@star
+@percent
+def printer(msg):
+    print(msg)
+
+
+printer("Hello")
+```
+
+Results in
+
+```
+******************************
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Hello
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+******************************
 ```
