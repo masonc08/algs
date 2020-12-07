@@ -4,10 +4,15 @@ Leetcode 231
 
 
 class Solution:
+    """
+    O(1) space and runtime by using n&(n-1) to detect last bit
+    Runtime: 48 ms, faster than 7.62% of Python3 online submissions for Power of Two.
+    Memory Usage: 14 MB, less than 79.25% of Python3 online submissions for Power of Two.
+    """
     def isPowerOfTwo(self, n: int) -> bool:
         if n <= 0:
             return False
-        return not n&(n-1)
+        return not n-(n&(-n))
 
 
     """
