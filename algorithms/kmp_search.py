@@ -1,42 +1,34 @@
-def generate_table(s):
-    if len(s) == 0:
-        return []
-    sol = [(s[0], 0)]
-    i = 0
-    j = 1
-    while j < len(s):
-        if s[i] == s[j]:
-            sol.append((s[j], i+1))
+def generate_table(needle):
+    table = [0]*len(needle)
+    i, j = 0, 1
+    while j < len(needle):
+        if needle[j] == needle[i]:
             i += 1
+            table[j] = i
+            j += 1
+        elif i == 0:
             j += 1
         else:
-            sol.append((s[j], 0))
-            i = 0
-            j += 1
-    return sol
+            i = table[i-1]
+    return table
             
 
-def kmp_search(s, pattern):
-    if len(s) < len(pattern):
+def kmp_search(haystack, needle):
+    if len(haystack) < len(needle):
         return False
-    if len(pattern) == 0:
+    if len(needle) == 0:
         return True
-    table = generate_table(pattern)
-    i = 0
-    j = -1
-    while i < len(s):
-        if j == len(pattern) - 1:
-            return True
-        elif s[i] == table[j+1][0]:
+    table = generate_table(needle)
+    i, j = 0, 0
+    while j < len(haystack):
+        c = haystack[j]
+        if c == needle[i]:
             i += 1
             j += 1
-        elif j != -1:
-            j = table[j][1] - 1
+        elif i != 0:
+            i = table[i-1]
         else:
-            i += 1
-    return j == len(pattern) - 1
-
-assert kmp_search('ababcabcabababd', 'ababd')
-assert not kmp_search('ababcabcabababd', 'ababf')
-assert kmp_search('', '')
-assert kmp_search('abcdef', '')
+            j += 1
+        if i >= len(needle):
+            return j-len(needle)
+    return -1
