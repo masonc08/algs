@@ -1,0 +1,22 @@
+# VIM
+- good to know to work on remote machines through command line since vi/vim comes with unix systems
+- `:q` to leave the vim instance
+- `:w` to write and save
+- `:wq` to write and save
+- `:q!` to leave without saving
+- vim has 3 different modes
+  - command mode allows you to enter commands to vim
+  - `i` to switch to insert mode, `esc` to go back to insert mode
+- `dd` to delete a line
+- `3dd` to delete 3 lines, `ndd` for n lines
+- `u` to undo last action, `ctrl R` to redo
+- `/query` to search, `enter` to go to first search result, `n` to go to next, `N` to go to previous
+- `%s/query/replace/g` to replace `query` with `replace`, `g` for greedy to apply to all, can also add `c` to do individual confirmations
+- `e` to move to end of word, `w` to move to beginning of word
+- `$` to move to end of line, `0` to move to beginning of line
+- `^` to move to first non blank character of line
+- `5j` to jump forward 5 lines, `hjkl` etc
+- `H` to jump to top of screen, `M` for middle, `L` for bottom
+- `G` to jump to end of file
+- `gg` to jump to start of file
+- `50G` to jump to line 50
