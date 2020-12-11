@@ -13,6 +13,7 @@
 - `/query` to search, `enter` to go to first search result, `n` to go to next, `N` to go to previous
 - `%s/query/replace/g` to replace `query` with `replace`, `g` for greedy to apply to all, can also add `c` to do individual confirmations
 - `e` to move to end of word, `w` to move to beginning of word
+- `b` to move BACK to last word
 - `$` to move to end of line, `0` to move to beginning of line
 - `^` to move to first non blank character of line
 - `5j` to jump forward 5 lines, `hjkl` etc
@@ -20,3 +21,5 @@
 - `G` to jump to end of file
 - `gg` to jump to start of file
 - `50G` to jump to line 50
+- `ctrl+end` to go to end of file, or `G$`
+- `x` to delete
