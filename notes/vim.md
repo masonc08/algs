@@ -7,15 +7,15 @@
 - vim has 3 different modes
   - command mode allows you to enter commands to vim
   - `i` to switch to insert mode, `esc` to go back to insert mode
-- `dd` to delete a line
+- `dd` to delete a line, `d}` to delete the code block below
 - `3dd` to delete 3 lines, `ndd` for n lines
 - `u` to undo last action, `ctrl R` to redo
 - `/query` to search, `enter` to go to first search result, `n` to go to next, `N` to go to previous
 - `%s/query/replace/g` to replace `query` with `replace`, `g` for greedy to apply to all, can also add `c` to do individual confirmations
-- `e` to move to end of word, `w` to move to beginning of word
-- `b` to move BACK to last word
+- `e` to move to end of word, `w` to move to beginning of word, `W` goes to next whitespace
+- `b` to move BACK to last word, `B` to last whitespace
 - `$` to move to end of line, `0` to move to beginning of line
-- `^` to move to first non blank character of line
+- `^` to move to first non blank character of line, or `0w` to go to start of line, then run to first word
 - `5j` to jump forward 5 lines, `hjkl` etc
 - `H` to jump to top of screen, `M` for middle, `L` for bottom
 - `G` to jump to end of file
@@ -23,3 +23,11 @@
 - `50G` to jump to line 50
 - `ctrl+end` to go to end of file, or `G$`
 - `x` to delete
+- `}` to go down a block of code, `{` to go up a block of code
+- `.` repeats the last executed command
+- `yy` to copy current line, `p` to paste line below current line
+- `v` to go to visual mode, allows selecting text, `V` selects lines at a time
+  - when text is selected, `d` to delete the text block, other commands also possible
+- `o` to add a new line below and go to insert mode, `O` to do the same thing for above
+- `:LINE_NMBR` to go to a certain line number
+
