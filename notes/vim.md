@@ -30,4 +30,14 @@
   - when text is selected, `d` to delete the text block, other commands also possible
 - `o` to add a new line below and go to insert mode, `O` to do the same thing for above
 - `:LINE_NMBR` to go to a certain line number
-
+- `tCHAR` takes you 1 before the first occurence of the character, `fCHAR` to land directly on the char
+- `%` takes you to other pair of parentesis, goes from { to }, [ to ] etc
+- `cw` to change the word
+- `D` to delete up to rest of line, `C` to delete rest of line and go to insert mode
+  - `ctCHAR` to delete up to char
+- `*` to run through where the word is being used in the file
+- `;` to go to next occurence of character in line
+- `z` to bring cursor to middle of screen
+- `a` for appending after where the cursor is, `A` to append at end of line
+- `I` for insert mode at the start of lines
+- `~` to swap cases
