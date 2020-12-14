@@ -25,3 +25,30 @@ class Solution:
 
         root and dfs(root, 0)
         return sol
+
+
+"""
+class Solution:
+	def pathSum(self, root: TreeNode, sum: int) -> List[List[int]]:
+		sol = []
+    path = []
+    def dfs(node, cur=0):
+			if not node:
+				return
+        cur += node.val
+        path.append(node.val)
+			if cur > sum:
+				path.pop()
+				return 
+        if not node.left and not node.right:
+				if cur == sum:
+					sol.append(path.copy())
+        path.pop()
+        return
+        dfs(node.left, cur)
+    	dfs(node.right, cur)
+        path.pop()
+  
+    dfs(root)
+    return sol
+"""
