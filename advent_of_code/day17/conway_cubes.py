@@ -92,6 +92,3 @@ class ConwayCubes:
                         if self.grid[m][k][i][j] == '#':
                             sol += 1
         return sol
-
-
-print(ConwayCubes().part2())
