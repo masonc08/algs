@@ -7,7 +7,7 @@ Memory Usage: 14.9 MB, less than 7.12% of Python3 online submissions for Increas
 
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
-        a, b = float('inf'), float('inf')
+        a, b = 0x7fffffff, 0x7fffffff
         for n in nums:
             if n <= a:
                 a = n
