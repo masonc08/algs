@@ -1,7 +1,14 @@
+"""
+Leetcode 930
+Runtime: 296 ms, faster than 18.86% of Python3 online submissions for Binary Subarrays With Sum.
+Memory Usage: 14.8 MB, less than 94.28% of Python3 online submissions for Binary Subarrays With Sum.
+"""
+
+
 class Solution:
     def numSubarraysWithSum(self, A: List[int], S: int) -> int:
         def solve(S):
-            if s<0:
+            if S<0:
                 return 0
             sol = i = 0
             for j, v in enumerate(A):
