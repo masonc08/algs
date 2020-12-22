@@ -6,6 +6,13 @@ A repository to store various algorithms encountered through deliberate practice
 
 ## Scripts
 
-```bash
-$ make_new platform_name question_number question_name
+Create new file
+
+```shell
+$ ./make_new.sh [options] platform_name question_number question_name
+```
+
+General help
+```shell
+$ ./make_new.sh -h
 ```
