@@ -6,6 +6,9 @@ Memory Usage: 14.8 MB, less than 94.28% of Python3 online submissions for Binary
 
 
 class Solution:
+    """
+    Sliding window
+    """
     def numSubarraysWithSum(self, A: List[int], S: int) -> int:
         def solve(S):
             if S<0:
@@ -20,21 +23,31 @@ class Solution:
             return sol
         return solve(S)-solve(S-1)
     
-        # i = j = cur = 0
-        # sol = 0
-        # while j < len(A) and cur < S:
-        #     cur += A[j]
-        #     j += 1
-        # while j < len(A):
-        #     a = i
-        #     while i < len(A) and A[i] != 1:
-        #         i += 1
-        #     if A == len(A):
-        #         return len(A)*(len(A)-1)//2
-        #     b = j
-        #     j += 1
-        #     while j < len(A) and A[j] == 0:
-        #         j += 1
-        #     sol += ((i-a+1)*(j-b))
-        #     i += 1
-        # return sol
+    # Sliding window with left interval
+    # def numSubarraysWithSum(self, A: List[int], S: int) -> int:
+    #     i = i1 = sol = cur = 0
+    #     for j, n in enumerate(A):
+    #         cur += n
+    #         while i < j and cur > S:
+    #             cur -= A[i]
+    #             i += 1
+    #         i1 = i
+    #         while i1 < j and A[i1] == 0:
+    #             i1 += 1
+    #         if cur == S:
+    #             sol += (i1-i+1)
+    #     return sol
+
+# Prefix sum solution
+# class Solution:
+#     def numSubarraysWithSum(self, A: List[int], S: int) -> int:
+#         mp = collections.Counter()
+#         mp[0] = 1
+#         cur = 0
+#         sol = 0
+#         for n in A:
+#             cur += n
+#             if cur-S in mp:
+#                 sol += mp[cur-S]
+#             mp[cur] += 1
+#         return sol
