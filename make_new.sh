@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
+if [ -z "$1" ] || [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
     echo "make_new.sh - create new file templates"
     echo "usage: ./make_new.sh [options] platform_name question_number question_name"
     echo "example: ./make_new.sh Leetcode 1306 jump_game_III"
