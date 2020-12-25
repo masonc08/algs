@@ -82,5 +82,4 @@ class LobbyLayout:
                             a1[0], b1[0], c1[0] = min(x, a1[0]), min(y, b1[0]), min(z, c1[0])
                             a1[1], b1[1], c1[1] = max(x, a1[1]), max(y, b1[1]), max(z, c1[1])
             a, b, c, flr = a1, b1, c1, new_flr
-            print(i, a, b, c)
         return len(new_flr)
