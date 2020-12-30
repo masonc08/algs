@@ -14,7 +14,6 @@ class Solution:
                 matrix[i][j] = int(matrix[i][j])
                 if i != m-1 and j != n-1 and matrix[i][j] == 1:
                     s, e, se = matrix[i+1][j], matrix[i][j+1], matrix[i+1][j+1]
-                    if all([n != 0 for n in {s, e, se}]):
-                        matrix[i][j] = min(s, e, se)+1
+                    matrix[i][j] = min(s, e, se)+1
                 sol = max(sol, matrix[i][j])
         return sol*sol
