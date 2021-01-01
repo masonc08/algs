@@ -2,10 +2,7 @@
 Leetcode 39
 """
 
-
-from typing import List
-
-
+# TODO: consider reviewing combo sum problems
 class Solution:
     """
     Recursive approach
