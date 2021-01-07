@@ -34,7 +34,7 @@ Memory Usage: 17.1 MB, less than 13.60% of Python3 online submissions for Find B
 """
 class Solution:
     def findBottomLeftValue(self, root: TreeNode) -> int:
-        def dfs(node, d, maxd, sol):
+        def dfs(node, d=0, maxd=-1, sol=0):
             if not node:
                 return maxd, sol
             if not node.left and not node.right:
@@ -44,5 +44,5 @@ class Solution:
             maxd, sol = dfs(node.left, d+1, maxd, sol)
             maxd, sol = dfs(node.right, d+1, maxd, sol)
             return maxd, sol
-        _, sol = dfs(root, 0, -1, 0)
+        _, sol = dfs(root)
         return sol
