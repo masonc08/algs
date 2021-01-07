@@ -19,8 +19,7 @@ Memory Usage: 16.4 MB, less than 51.84% of Python3 online submissions for Find B
 #         while li:
 #             new = []
 #             for node in li:
-#                 node.left and new.append(node.left)
-#                 node.right and new.append(node.right)
+#                 new += filter(None, (node.left, node.right))
 #             if not new:
 #                 return li[0].val
 #             li = new
