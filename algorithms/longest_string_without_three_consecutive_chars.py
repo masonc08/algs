@@ -1,4 +1,8 @@
 """
+Leetcode 1405
+Runtime: 24 ms, faster than 95.17% of Python3 online submissions for Longest Happy String.
+Memory Usage: 14.3 MB, less than 49.31% of Python3 online submissions for Longest Happy String.
+
 Wayfair OA
 
 We are given the maximum occurances of 'a', 'b' and 'c' in a string.
