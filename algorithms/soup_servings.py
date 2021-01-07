@@ -20,14 +20,13 @@ class Solution:
             if b <= 0:
                 return 0, 0
             sols = [
-                search(a-4, b),
-                search(a-3, b-1),
-                search(a-2, b-2),
-                search(a-1, b-3)
+                search(a-100, b),
+                search(a-75, b-25),
+                search(a-50, b-50),
+                search(a-25, b-75)
             ]
             return sum(a for a, _ in sols)/4, sum(b for _, b in sols)/4
         if N > 4800:
             return 1
-        N = math.ceil(N/25.0)
         a, b = search(N, N)
         return a+b/2
