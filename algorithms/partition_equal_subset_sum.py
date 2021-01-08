@@ -9,6 +9,7 @@ from typing import List
 
 class Solution:
     """
+    O(NS) runtime, O(S) space, N=n, S=sum(N)//2
     DP solution, 01 knapsack style
     Runtime: 1152 ms, faster than 56.03% of Python3 online submissions for Partition Equal Subset Sum.
     Memory Usage: 14.4 MB, less than 66.43% of Python3 online submissions for Partition Equal Subset Sum.
@@ -27,6 +28,7 @@ class Solution:
 
 
     """
+    O(NS) runtime, O(NS) space, N=n, S=sum(N)//2
     DFS Solution with memoization
     Runtime: 1348 ms, faster than 50.53% of Python3 online submissions for Partition Equal Subset Sum.
     Memory Usage: 89.3 MB, less than 6.12% of Python3 online submissions for Partition Equal Subset Sum.
