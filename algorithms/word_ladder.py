@@ -12,7 +12,7 @@ import collections
 class Solution:
     """
     S = average length of each string, N = input size
-    O(NMM) runtime, O(NM) space
+    O(NMM) runtime, O(NNM) space
     """
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         adj_li = self.get_adj_li(set(wordList + [beginWord]))
