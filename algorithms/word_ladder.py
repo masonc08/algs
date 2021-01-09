@@ -38,9 +38,10 @@ class Solution:
         for word in words:
             L = len(word)
             for i in range(L):
-                struct = word[:i] + '_' + word[:i+1]
+                struct = word[:i] + '_' + word[i+1:]
                 adj_li[struct] += word,
         return adj_li
+
 
     """
     S = average length of each string, N = input size
