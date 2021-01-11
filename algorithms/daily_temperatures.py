@@ -8,8 +8,7 @@ Memory Usage: 18.7 MB, less than 58.31% of Python3 online submissions for Daily 
 class Solution:
     def dailyTemperatures(self, T: List[int]) -> List[int]:
         L = len(T)
-        stk = [L-1]
-        sol = [0]*L
+        stk, sol = [L-1], [0]*L
         for i in range(L-1, -1, -1):
             v = T[i]
             while stk and T[stk[-1]] <= v:
