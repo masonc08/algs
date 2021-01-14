@@ -22,6 +22,3 @@ class Solution:
             else:
                 ct[c] += 1
         return len(ct) == 0
-
-
-print(Solution().canReorderDoubled([3, 1, 3, 6]))
