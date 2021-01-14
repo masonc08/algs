@@ -13,15 +13,10 @@ Memory Usage: 14.4 MB, less than 11.42% of Python3 online submissions for Add Tw
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        self.next, run = None, self
-        c = 0
+        self.next, run, c = None, self, 0
         while l1 or l2 or c:
             a, b = l1.val if l1 else 0, l2.val if l2 else 0
             v = a+b+c
             run.next, c = ListNode(v%10), v//10
-            run = run.next
-            if l1:
-                l1 = l1.next
-            if l2:
-                l2 = l2.next
+            l1, l2, run = l1 and l1.next, l2 and l2.next, run.next
         return self.next
