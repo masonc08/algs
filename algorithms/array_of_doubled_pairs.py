@@ -7,7 +7,6 @@ Memory Usage: 16.7 MB, less than 57.71% of Python3 online submissions for Array 
 
 
 import collections
-from typing import List
 
 
 class Solution:
