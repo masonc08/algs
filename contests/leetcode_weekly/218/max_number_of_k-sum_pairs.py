@@ -1,6 +1,8 @@
 """
-Leetcode 179
+Leetcode 1679
 Leetcode contest 218
+January Leetcoding challenge
+O(n) runtime, O(1) space
 Runtime: 844 ms, faster than 25.00% of Python3 online submissions for Max Number of K-Sum Pairs.
 Memory Usage: 27.3 MB, less than 75.00% of Python3 online submissions for Max Number of K-Sum Pairs.
 """
@@ -20,5 +22,5 @@ class Solution:
                 if mp[k-num] == 0:
                     del mp[k-num]
             else:
-                mp[k-num] += 1
+                mp[num] += 1
         return sol
