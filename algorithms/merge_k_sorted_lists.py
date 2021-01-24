@@ -12,45 +12,70 @@ import heapq
 #         self.val = val
 #         self.next = next
 class Solution:
-    """
-    O(nlgk) runtime, O(1) space by divide and conquer
-    Runtime: 116 ms, faster than 46.77% of Python3 online submissions for Merge k Sorted Lists.
-    Memory Usage: 17.7 MB, less than 74.28% of Python3 online submissions for Merge k Sorted Lists.
-    """
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        rem = len(lists)
-        interval = 2
-        while interval <= rem:
-            j = 0
-            for i in range(0, rem, interval):
-                if i+1 == rem:
-                    lists[j] = lists[i]
-                else:
-                    lists[j] = self._merge(lists[i], lists[i+1])
-                j += 1
-            rem = j
-        return lists[0] if rem == 1 else None
+        L, step = len(lists), 2
+        while step//2 < L:
+            for i in range(0, L, step):
+                skip = step//2
+                lists[i] = self._merge(lists[i], lists[i+skip] if i+skip < L else None)
+            step *= 2
+        return None if not lists else lists[0]
 
-
-    def _merge(self, l1, l2):
-        d = ListNode()
-        runner = d
-        while l1 and l2:
-            if l1.val > l2.val:
-                runner.next = l2
-                l2 = l2.next
-                runner = runner.next
-                runner.next = None
+    def _merge(self, A, B):
+        if not B:
+            return A
+        sol = run = ListNode()
+        while A or B:
+            if not A or B and A.val >= B.val:
+                run.next = B
+                B = B.next
             else:
-                runner.next = l1
-                l1 = l1.next
-                runner = runner.next
-                runner.next = None
-        if l1:
-            runner.next = l1
-        elif l2:
-            runner.next = l2
-        return d.next
+                run.next = A
+                A = A.next
+            run = run.next
+        return sol.next
+
+
+# class Solution:
+#     """
+#     O(nlgk) runtime, O(1) space by divide and conquer
+#     Runtime: 116 ms, faster than 46.77% of Python3 online submissions for Merge k Sorted Lists.
+#     Memory Usage: 17.7 MB, less than 74.28% of Python3 online submissions for Merge k Sorted Lists.
+#     """
+#     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+#         rem = len(lists)
+#         interval = 2
+#         while interval <= rem:
+#             j = 0
+#             for i in range(0, rem, interval):
+#                 if i+1 == rem:
+#                     lists[j] = lists[i]
+#                 else:
+#                     lists[j] = self._merge(lists[i], lists[i+1])
+#                 j += 1
+#             rem = j
+#         return lists[0] if rem == 1 else None
+
+
+#     def _merge(self, l1, l2):
+#         d = ListNode()
+#         runner = d
+#         while l1 and l2:
+#             if l1.val > l2.val:
+#                 runner.next = l2
+#                 l2 = l2.next
+#                 runner = runner.next
+#                 runner.next = None
+#             else:
+#                 runner.next = l1
+#                 l1 = l1.next
+#                 runner = runner.next
+#                 runner.next = None
+#         if l1:
+#             runner.next = l1
+#         elif l2:
+#             runner.next = l2
+#         return d.next
 
 
     """
