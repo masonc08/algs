@@ -1,4 +1,9 @@
-# Leetcode 79
+"""
+Leetcode 79
+O(MN3^L) runtime, O(L) space
+Runtime: 324 ms, faster than 79.85% of Python3 online submissions for Word Search.
+Memory Usage: 15.6 MB, less than 79.99% of Python3 online submissions for Word Search.
+"""
 
 
 class Solution:
