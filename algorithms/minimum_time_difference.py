@@ -4,7 +4,7 @@ Leetcode 539
 
 
 """
-O(n) runtime, O(1) space by bucket sorting
+O(n) runtime, O(1) space by bucket sorting and pigeonhole shortcut
 Runtime: 68 ms, faster than 82.75% of Python3 online submissions for Minimum Time Difference.
 Memory Usage: 17 MB, less than 74.18% of Python3 online submissions for Minimum Time Difference.
 """
