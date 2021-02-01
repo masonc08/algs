@@ -13,23 +13,35 @@ Memory Usage: 19.4 MB, less than 5.21% of Python3 online submissions for Balance
 #         self.right = right
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
-        def _isBalanced(node):
+        def helper(node):
             if not node:
-                return True, 0
-            left_balanced, left_height = _isBalanced(node.left)
-            if not left_balanced:
-                return False, -1
-            right_balanced, right_height = _isBalanced(node.right)
-            if not right_balanced:
-                return False, -1
-            return abs(right_height-left_height) <= 1, max(left_height, right_height)+1
+                return 0
+            l, r = helper(node.left), helper(node.right)
+            if l == -1 or r == -1 or abs(l-r) > 1:
+                return -1
+            return max(l, r)+1
+        return helper(root) != -1
 
-        if not root:
-            return True
-        left_balanced, left_height = _isBalanced(root.left)
-        if not left_balanced:
-            return False
-        right_balanced, right_height = _isBalanced(root.right)
-        if not right_balanced:
-            return False
-        return abs(right_height-left_height) <= 1
+
+# class Solution:
+#     def isBalanced(self, root: TreeNode) -> bool:
+#         def _isBalanced(node):
+#             if not node:
+#                 return True, 0
+#             left_balanced, left_height = _isBalanced(node.left)
+#             if not left_balanced:
+#                 return False, -1
+#             right_balanced, right_height = _isBalanced(node.right)
+#             if not right_balanced:
+#                 return False, -1
+#             return abs(right_height-left_height) <= 1, max(left_height, right_height)+1
+
+#         if not root:
+#             return True
+#         left_balanced, left_height = _isBalanced(root.left)
+#         if not left_balanced:
+#             return False
+#         right_balanced, right_height = _isBalanced(root.right)
+#         if not right_balanced:
+#             return False
+#         return abs(right_height-left_height) <= 1
