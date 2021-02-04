@@ -36,3 +36,61 @@ Source: <https://blog.pramp.com/how-to-succeed-in-a-system-design-interview-27b3
 - if you can mention tradeoffs in realtime as you suggest solutions, it shows that you understand complex systems require compromises and nothing is perfect
 - this is really important since ultimately there is no correct answer to system design problems
 - Eg: what kind of DB are you going to use? SQL? NoSQL? What are the tradeoffs? What kind of caching servise will you use? Redis? memcached? What are the tradeoffs between the two? What kind of frameworks will you use?
+
+## System Design Patterns
+
+### Messaging Queue
+<https://youtu.be/oUJbuFMyBDk>
+
+- clients make a request and immediately returns a promise
+- requests are thrown into a queue, and removed as they are processes
+- this allows the CPU to complete tasks according to a priority
+- this is considered as asynchronous processing
+- however, if one node goes down, all the data within its queue are lost, when it should really just be sent to aother node that is still operational, in order to complete the task at the broken node
+- we can consider storing tasks within a database such that the data persists, without remembering which node the task came from
+- create a heartbeat service to check if node status on intervals, if it notices that a service is dead, it queries the database for uncompleted orders and distributes it to the remaining alive servers
+- to distribute the abandoned tasks to the remaining alive servers, we use a load balancer to equally distribute the tasks from the lost nodes to the remaining alive nodes
+- consistent hashing ensures that the same tasks that were queried from alive nodes are sent back to the same alive nodes, so we dont have duplication of tasks among two nodes
+- rabbitMQ is a messaging queue
+
+### Microservice vs Monolith
+<https://youtu.be/qYhRvH9tJKw>
+
+- how do you know when to use monoliths vs microservice?
+- you can still horizontally scale a monolith
+- a microservice is a single business unit, and services are isolated out to their smallest piece
+- clients may connect to a gateway, and the gateway communicates the client with the microservices
+
+#### Monoliths
+- for small teams, monolith is good because it's easier to get things done
+- simple maintenance and dont need to think as hard for deployments
+- code just has to be written once since it's just one codebase
+- monoliths are faster than microservices since calls are within the same system, theese are local calls vs microservices have to use network calls
+- new developers need to know a lot of context on the codebase to start working
+- monoliths are a single point of failure, if there's a mistake anywhere in the codebase, the entire monolith crashes
+
+#### Microservices
+- easiest to scale, it's a suite of services, which each service can be scales
+- easier to design the system
+- new team members just need to know the context of one microservice that they are working on
+- parallel development is easier as working on different microservices are on different codebases
+- microservices has better metrics, as you know exactly which part of the code is under higher load
+- if a microservice is only talking to once service, then maybe they should be just put together
+  - this reduces the need for RPC (network) calls
+
+## Database Sharding
+<https://youtu.be/5faMjKuB9bc>
+
+- sharding takes one attribute into the data, and partition it such that each node gets one chunk of it
+- we need to ensure data is still consistent with sharding
+- we also need to ensure that the database is availability
+- we can shard database on an ID, but sometimes there is better ways to shard such as using location, for location sensitive apps like tinder
+  - this lets you query very fast, as the shards are indexed by the thing you're looking for
+- we can create a master-slave architecture on each shard, to prevent loss when one shard goes out
+  - writes are done to the master, reads are done to the slaves, and if the master goes out, one slave is promoted to the master
+
+### Problems
+- joining tables across shards is very difficult because now it involves network calls
+- cant have dynamic number of shards
+  - you can overcome this by sharding a shard recursively (hierarchical sharding)
+- hard to make data consistent
