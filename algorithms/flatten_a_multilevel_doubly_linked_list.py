@@ -1,6 +1,7 @@
 """
 Leetcode 430
-
+Runtime: 32 ms, faster than 86.88% of Python3 online submissions for Flatten a Multilevel Doubly Linked List.
+Memory Usage: 15 MB, less than 42.25% of Python3 online submissions for Flatten a Multilevel Doubly Linked List.
 """
 
 
