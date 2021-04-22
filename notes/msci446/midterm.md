@@ -29,7 +29,9 @@ library("ISLR") # Provides dataset
   fit.poly3 <- lm(price ~ poly(log(sqft_living),3), data = house)
   ```
 - `unique(data$col1)` to get all unique values in col1
-- `data = na.omit(movies)` to strip `NA` columns
+- `data = na.omit(movies)` to strip `NA` rows
+- Construct a matrix using existing vectors using `m = data.frame(col1=vct1, col2=vct2, ...)`
+  - `data = data.frame(x=data.train, y=res.train)`
 
 
 ## Regression
@@ -62,7 +64,8 @@ library("ISLR") # Provides dataset
   | Leave-One-Out Cross Validation (LOOCV) | `ctrl = trainControl(method="LOOCV", number=10)`                 |
   | K-Fold Cross Validation                | `ctrl = trainControl(method="cv", number=10)`                    |
   | Repeated Cross Validation              | `ctrl = trainControl(method="repeatedcv", number=10, repeats=5)` |
-- Create a __linear__ model with cross validation using a controller `ctrl`
+- Create a model with cross validation using a controller `ctrl`
+  - Use `method="lm"` for linear regressions, and `method="gamLoess"` for locally weighted regression
   ```R
   fit <- train(
     form=y ~ x1 + x2 + ... + xn, 
@@ -90,7 +93,7 @@ library("ISLR") # Provides dataset
 
 
 ## Model Selection
-- Apply forward or backwards selection using optional parameter `method="forward"` or `method="backward"`
+- Apply forward or backwards selection using optional parameter `method="forward"` or `method="backward"`, all subsets selection is used by default if no `method` is provided
   - `res = regsubsets(y ~ x1 + x2 + ... + xn, data=data, method = "forward", nvmax=ncol(data))`
 - Get summary of all selection iterations by `rss = summary(res)`
 - Get sum of squared error (RSS) at each iteration by `rss = res$rss`
@@ -254,3 +257,11 @@ library("ISLR") # Provides dataset
     return(list(theta,cost))
   }
   ```
+
+## Sources and Further References
+1. [Tutorial 2, Data Processing](https://braininamath.github.io/TheStory/W2_Data_Processing.html)
+2. [Tutorial 3, Regression](https://braininamath.github.io/TheStory/W3_Regression.html)
+3. [Tutorial 4, Nonlinear](https://braininamath.github.io/TheStory/W4_Nonlinear.html)
+4. [Tutorial 5, Gradient Descent](https://braininamath.github.io/TheStory/W5_GradientDescent.html)
+5. [Assignment 1](https://learn.uwaterloo.ca/d2l/le/content/655854/viewContent/3514138/View)
+6. [Assignment 2](https://learn.uwaterloo.ca/d2l/le/content/655854/viewContent/3540352/View)
