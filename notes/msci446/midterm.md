@@ -1,4 +1,4 @@
-# R Cheatsheet
+# Midterm R Cheatsheet for MSCI 446
 
 ## Common Libraries
 ```R
