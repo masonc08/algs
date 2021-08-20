@@ -1,10 +1,13 @@
 """
 Leetcode 1339
 August Leetcoding challenge
+O(n) runtime, O(d) space, n=number of nodes, d=max depth of tree
+Runtime: 412 ms, faster than 30.74% of Python3 online submissions for Maximum Product of Splitted Binary Tree.
+Memory Usage: 69.3 MB, less than 93.33% of Python3 online submissions for Maximum Product of Splitted Binary Tree.
 """
 
 
-from typing import List
+from typing import List, Optional
 import collections, bisect, heapq, itertools, functools, math
 
 
