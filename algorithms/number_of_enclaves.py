@@ -1,6 +1,6 @@
 """
 Leetcode 1020
-
+O(mn) runtime and space
 """
 
 
