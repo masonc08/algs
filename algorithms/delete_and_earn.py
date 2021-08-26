@@ -1,5 +1,6 @@
 """
 Leetcode 740
+O(n+mlogm) runtime, O(m) space. n=input size, m=max(A)
 Runtime: 73 ms, faster than 23.79% of Python3 online submissions for Delete and Earn.
 Memory Usage: 14.4 MB, less than 82.52% of Python3 online submissions for Delete and Earn.
 """
