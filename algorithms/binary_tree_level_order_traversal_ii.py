@@ -3,16 +3,16 @@ Leetcode 107
 """
 
 
-from typing import List
+from typing import List, Optional
 import collections, bisect, heapq, itertools, functools, math
 
 
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     # Runtime: 37 ms, faster than 33.35% of Python3 online submissions for Binary Tree Level Order Traversal II.
     # Memory Usage: 15.4 MB, less than 7.84% of Python3 online submissions for Binary Tree Level Order Traversal II.
