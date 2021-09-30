@@ -5,7 +5,7 @@ Leetcode 973
 
 
 from typing import List
-import collections, bisect, heapq, itertools, functools, math
+import collections, bisect, heapq, itertools, functools, math, random
 
 
 class Solution:
