@@ -43,7 +43,7 @@ $(is_monthly)
 
 
 from typing import List, Optional
-import collections, bisect, heapq, itertools, functools, math
+import collections, bisect, heapq, itertools, functools, math, random
 
 
 EOL
