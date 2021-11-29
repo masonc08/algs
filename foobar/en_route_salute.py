@@ -6,5 +6,5 @@ def solution(s):
         if c == '>':
             l += 1
         elif c == '<':
-            sol += l
+            sol += l*2
     return sol
