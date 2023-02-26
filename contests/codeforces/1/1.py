@@ -8,11 +8,11 @@ def solve(A):
         gcd = math.gcd(n, A[i])
     return gcd <= 2
 
-# if __name__ == "__main__":
-#     t = int(input())
-#     for _ in range(t):
-#         n = int(input())
-#         a = list(map(int, input().split()))
-#         print(solve(a))
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        print(solve(a))
 
-print(solve([1261,227821,143,4171,1941]))
+# print(solve([1261,227821,143,4171,1941]))
