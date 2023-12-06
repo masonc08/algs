@@ -1,3 +1,6 @@
+import functools
+
+
 def get_seeds(s):
     return tuple(map(int, s.split()[1:]))
 
@@ -5,7 +8,7 @@ def get_seeds_interval(s):
     li = tuple(map(int, s.split()[1:]))
     intervals = []
     for i in range(0, len(li), 2):
-        intervals.append((li[i], li[i+1]))
+        intervals.append((li[i], li[i] + li[i+1]))
     return intervals
 
 def get_mappings(s):
@@ -47,7 +50,7 @@ def part1():
     return sol
 
 def part2():
-    with open("advent_of_code/2023/day5/in_sample_modified.txt") as f:
+    with open("advent_of_code/2023/day5/in_modified.txt") as f:
         lines = f.read()
     blocks = lines.split("\n\n")
     seeds_line = blocks[0].strip()
@@ -56,24 +59,27 @@ def part2():
     mappings = get_mappings(mapping_lines)
 
     sol = [111111111111]
+
+    @functools.lru_cache(None)
     def translate_interval(seed_start, seed_end, i):
         if i == len(mappings):
             sol[0] = min(sol[0], seed_start)
             return
         mapping = mappings[i]
         for j, (dest_start, source_start, range) in enumerate(mapping[1:]):
+            j = j+1
             source_end = source_start + range
             dest_end = dest_start + range
-            if seed_end < source_start: # Type A
+            if seed_end <= source_start: # Type A
                 last_mapping = mapping[j-1]
                 prev_source_end = last_mapping[1] + last_mapping[2]
-                translate_interval(max(prev_source_end+1, seed_start), seed_end, i+1)
+                translate_interval(max(prev_source_end, seed_start), seed_end, i+1)
             elif seed_start < source_start and seed_end <= source_end: # Type B
-                translate_interval(seed_start, source_start-1)
+                translate_interval(seed_start, source_start, i+1)
                 translate_interval(dest_start, dest_start+(seed_end-source_start), i+1)
-            elif source_start <= seed_start <= seed_end <= source_end: # Type C
+            elif source_start <= seed_start < seed_end <= source_end: # Type C
                 translate_interval(dest_start+(seed_start-source_start), dest_start+(seed_end-source_start), i+1)
-            elif source_start <= seed_start <= source_end < seed_end: # Type D
+            elif source_start <= seed_start < source_end < seed_end: # Type D
                 translate_interval(dest_start+(seed_start-source_start), dest_end, i+1)
 
     for start, end in seed_intervals:
