@@ -73,7 +73,8 @@ def part2():
             if seed_end <= source_start: # Type A
                 last_mapping = mapping[j-1]
                 prev_source_end = last_mapping[1] + last_mapping[2]
-                translate_interval(max(prev_source_end, seed_start), seed_end, i+1)
+                if prev_source_end < seed_end:
+                    translate_interval(max(prev_source_end, seed_start), seed_end, i+1)
             elif seed_start < source_start and seed_end <= source_end: # Type B
                 translate_interval(seed_start, source_start, i+1)
                 translate_interval(dest_start, dest_start+(seed_end-source_start), i+1)
