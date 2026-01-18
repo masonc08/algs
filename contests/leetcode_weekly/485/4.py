@@ -1,5 +1,6 @@
 import collections
 
+# Incorrect solution
 class Solution:
     def lexSmallestAfterDeletion(self, s: str) -> str:
         L = len(s)
@@ -29,6 +30,7 @@ class Solution:
             if ct[c] > 1:
                 ct[c] -= 1
                 res.pop()
+            break
         return "".join(res)
 
         # for i in range(L):
